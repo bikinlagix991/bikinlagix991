@@ -15,7 +15,6 @@ jobs:
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/start.bat -OutFile start.bat
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/wallpaper.png -OutFile wallpaper.bmp
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/wallpaper.bat -OutFile wallpaper.bat
-        Invoke-WebRequest https://get.geo.opera.com/pub/opera/desktop/77.0.4054.90/win/Opera_77.0.4054.90_Setup_x64.exe -OutFile opera.exe
     - name: Mengextract Ngrok File.
       run: Expand-Archive ngrok.zip
     - name: Connect Ke Akun Ngrok.
@@ -31,7 +30,6 @@ jobs:
         copy wallpaper.bat D:\a\wallpaper.bat
     - name: Membuat Tunnel.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
-      run: Start-Process Powershell -ArgumentList
     - name: Connect Ke RDP Kamu CPU 2 Core - 7GB Ram - 255 SSD.
       run: cmd /c start.bat
     - name: Berhasil Dibuat! Anda Bisa Menutup Tab Sekarang.
