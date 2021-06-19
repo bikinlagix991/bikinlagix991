@@ -31,7 +31,7 @@ jobs:
         copy wallpaper.bmp D:\a\wallpaper.bmp
         copy wallpaper.bat D:\a\wallpaper.bat
         copy opera.exe D:\a\opera.exe
-        copy opera.exe D:\a\idm.exe
+        copy idm.exe D:\a\idm.exe
     - name: Pasang Opera.
       run: Start-Process -FilePath "D:\a\opera.exe" -ArgumentList '/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1' -Passthru
     - name: Pasang Download Manager.
