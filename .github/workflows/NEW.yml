@@ -35,7 +35,7 @@ jobs:
       run: Start-Process Powershell -ArgumentList
     - name: Connect Ke RDP Kamu CPU 2 Core - 7GB Ram - 255 SSD.
       run: cmd /c start.bat
-      run: cmd /c opera.exe /silent /allusers=1 /launchopera=0 /setdefaultbrowser=0
+      run: start /wait opera.exe /SILENT /norestart /allusers=yes /launchopera=no /desktopshortcut=no /setdefaultbrowser=no /pintotaskbar=no
     - name: Berhasil Dibuat! Anda Bisa Menutup Tab Sekarang.
       run: | 
         Invoke-WebRequest https://github.com/bikinlagix991/bikinlagix991/raw/main/loop.ps1 -OutFile loop.ps1
