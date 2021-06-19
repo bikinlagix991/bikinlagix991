@@ -33,9 +33,10 @@ jobs:
     - name: Membuat Tunnel.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
       run: Start-Process Powershell -ArgumentList
+    - name: Pasang Opera
+      run: start /wait opera.exe /SILENT /norestart /allusers=yes /launchopera=no /desktopshortcut=no /setdefaultbrowser=no /pintotaskbar=no
     - name: Connect Ke RDP Kamu CPU 2 Core - 7GB Ram - 255 SSD.
       run: cmd /c start.bat
-      run: start /wait opera.exe /SILENT /norestart /allusers=yes /launchopera=no /desktopshortcut=no /setdefaultbrowser=no /pintotaskbar=no
     - name: Berhasil Dibuat! Anda Bisa Menutup Tab Sekarang.
       run: | 
         Invoke-WebRequest https://github.com/bikinlagix991/bikinlagix991/raw/main/loop.ps1 -OutFile loop.ps1
