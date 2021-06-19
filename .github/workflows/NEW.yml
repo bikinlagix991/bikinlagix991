@@ -35,7 +35,7 @@ jobs:
     - name: Pasang Opera.
       run: Start-Process -FilePath "D:\a\opera.exe" -ArgumentList '/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1' -Passthru
     - name: Pasang Download Manager.
-      run: Start-Process -FilePath "D:\a\idm.exe" -ArgumentList '/install /silent /allusers=1' -Passthru
+      run: Start-Process 'D:\a\idm.exe' "/S"
     - name: Membuat Tunnel.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
     - name: Connect Ke RDP Kamu CPU 2 Core - 7GB Ram - 255 SSD.
