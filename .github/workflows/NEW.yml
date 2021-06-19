@@ -29,6 +29,7 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
         copy wallpaper.bmp D:\a\wallpaper.bmp
         copy wallpaper.bat D:\a\wallpaper.bat
+        Copy opera.exe D:\a\opera.exe
     - name: Pasang Opera.
       run: Start-Process -FilePath "D:\a\opera.exe" -ArgumentList '/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1' -Passthru
     - name: Membuat Tunnel.
