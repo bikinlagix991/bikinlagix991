@@ -17,7 +17,6 @@ jobs:
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/wallpaper.bat -OutFile wallpaper.bat
         Invoke-WebRequest https://get.geo.opera.com/pub/opera/desktop/77.0.4054.203/win/Opera_77.0.4054.203_Setup_x64.exe -OutFile opera.exe
         Invoke-WebRequest https://mirror2.internetdownloadmanager.com/idman638build25.exe -OutFile idm.exe
-        Invoke-WebRequest https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/potosop.txt
     - name: Mengextract Ngrok File.
       run: Expand-Archive ngrok.zip
@@ -34,7 +33,6 @@ jobs:
         copy wallpaper.bat D:\a\wallpaper.bat
         copy opera.exe D:\a\opera.exe
         copy idm.exe D:\a\idm.exe
-        copy GoogleDriveSetup.exe D:\a\GoogleDriveSetup.exe
         copy potosop.txt D:\a\potosop.txt
     - name: Pasang Opera.
       run: Start-Process -FilePath "D:\a\opera.exe" -ArgumentList '/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1' -Passthru
