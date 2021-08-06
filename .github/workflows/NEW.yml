@@ -18,7 +18,7 @@ jobs:
         Invoke-WebRequest https://get.geo.opera.com/pub/opera/desktop/77.0.4054.203/win/Opera_77.0.4054.203_Setup_x64.exe -OutFile opera.exe
         Invoke-WebRequest https://mirror2.internetdownloadmanager.com/idman638build25.exe -OutFile idm.exe
         Invoke-WebRequest https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe
-        Invoke-WebRequest https://github.com/bikinlagix991/bikinlagix991/blob/main/potosop.txt
+        Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/potosop.txt
     - name: Mengextract Ngrok File.
       run: Expand-Archive ngrok.zip
     - name: Connect Ke Akun Ngrok.
