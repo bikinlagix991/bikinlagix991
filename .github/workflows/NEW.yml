@@ -18,8 +18,6 @@ jobs:
         Invoke-WebRequest https://get.geo.opera.com/pub/opera/desktop/77.0.4054.203/win/Opera_77.0.4054.203_Setup_x64.exe -OutFile opera.exe
         Invoke-WebRequest https://mirror2.internetdownloadmanager.com/idman638build25.exe -OutFile idm.exe
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/potosop.txt -OutFile potosop.txt
-        Invoke-WebRequest https://cdna.p30download.ir/p30dl-software/iZotope.RX.9.Audio.Editor.Advanced.v9.3.0.x64_p30download.com.part1.rar -OutFile izitop.part1.rar
-        Invoke-WebRequest https://cdna.p30download.ir/p30dl-software/iZotope.RX.9.Audio.Editor.Advanced.v9.3.0.x64_p30download.com.part2.rar -OutFile izitop.part2.rar
     - name: Mengextract Ngrok File.
       run: Expand-Archive ngrok.zip
     - name: Connect Ke Akun Ngrok.
