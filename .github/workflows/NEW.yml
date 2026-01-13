@@ -4,12 +4,11 @@ on: workflow_dispatch
 
 jobs:
   build:
-
     runs-on: windows-latest
     timeout-minutes: 9999
 
     steps:
-    - name: Mendownload Ngrok.
+    - name: Mendownload File Pendukung
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/start.bat -OutFile start.bat
@@ -18,27 +17,40 @@ jobs:
         Invoke-WebRequest https://get.geo.opera.com/pub/opera/desktop/95.0.4635.25/win/Opera_95.0.4635.25_Setup_x64.exe -OutFile opera.exe
         Invoke-WebRequest https://mirror2.internetdownloadmanager.com/idman638build25.exe -OutFile idm.exe
         Invoke-WebRequest https://raw.githubusercontent.com/bikinlagix991/bikinlagix991/main/potosop.txt -OutFile potosop.txt
-    - name: Mengextract Ngrok File.
+
+    - name: Extract Ngrok
       run: Expand-Archive ngrok.zip
-    - name: Connect Ke Akun Ngrok.
+
+    - name: Install Git Bash (Otomatis)
+      run: |
+        winget install --id Git.Git -e --source winget --silent --accept-package-agreements --accept-source-agreements
+        echo "Git Bash installed"
+        & "C:\Program Files\Git\bin\bash.exe" --version
+
+    - name: Connect Ke Akun Ngrok
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Mengaktifkan Akses RDP.
-      run: | 
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+
+    - name: Aktifkan RDP
+      run: |
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1
         copy wallpaper.bmp D:\a\wallpaper.bmp
         copy wallpaper.bat D:\a\wallpaper.bat
         copy opera.exe D:\a\opera.exe
-    - name: Pasang Opera.
-      run: Start-Process -FilePath "D:\a\opera.exe" -ArgumentList '/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1' -Passthru
-    - name: Membuat Tunnel.
-      run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
-    - name: Connect Ke RDP Kamu CPU 2 Core - 7GB Ram - 255 SSD.
+
+    - name: Install Opera
+      run: Start-Process -FilePath "D:\a\opera.exe" -ArgumentList '/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1' -Wait
+
+    - name: Start Ngrok Tunnel
+      run: Start-Process Powershell -ArgumentList '-NoExit -Command ".\ngrok\ngrok.exe tcp 3389"'
+
+    - name: Start RDP Session
       run: cmd /c start.bat
-    - name: Berhasil Dibuat! Anda Bisa Menutup Tab Sekarang.
-      run: | 
+
+    - name: Keep Alive
+      run: |
         Invoke-WebRequest https://github.com/bikinlagix991/bikinlagix991/raw/main/loop.ps1 -OutFile loop.ps1
         ./loop.ps1
